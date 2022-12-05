@@ -85,10 +85,6 @@ stations = {
     "vila_uniao":["vila uniao"]
 }
 
-function getAbbreviation(guess_string){
-
-}
-
 var input = document.getElementById('station');
 input.addEventListener('input', searchValues);
 
