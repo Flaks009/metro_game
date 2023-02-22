@@ -1,4 +1,8 @@
-stations = {
+const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+var mode = params.mode;
+var stations = {
     "aacd_servidor": [
         "aacd servidor"
     ],
@@ -532,8 +536,8 @@ stations = {
     "vila_matilde": [
         "vila matilde"
     ],
-    "vila_mendes_natal": [
-        "vila mendes natal"
+    "mendes_vila_natal": [
+        "mendes vila natal"
     ],
     "vila_olimpia": [
         "vila olimpia"
@@ -553,77 +557,203 @@ stations = {
     "villa_lobos_jaguare": [
         "villa lobos jaguare"
     ]
-}
+};
+var stations_category = {
+    "cptm": [
+      "aeroporto_guarulhos",
+      "agua_branca",
+      "amador_bueno",
+      "antonio_gianetti_neto",
+      "antonio_joao",
+      "aracare",
+      "autodromo",
+      "baltazar_fidelis",
+      "barueri",
+      "berrini",
+      "botujuru",
+      "braz_cubas",
+      "caieiras",
+      "calmon_viana",
+      "campo_limpo_paulista",
+      "capuava",
+      "carapicuiba",
+      "ceasa",
+      "cidade_jardim",
+      "cidade_universitaria",
+      "comandante_sampaio",
+      "comendador_ermelino",
+      "corinthians_itaquera",
+      "dom_bosco",
+      "domingos_de_moraes",
+      "engenheiro_cardoso",
+      "engenheiro_goulart",
+      "engenheiro_manoel_feio",
+      "estudantes",
+      "ferraz_de_vasconcelos",
+      "francisco_morato",
+      "franco_da_rocha",
+      "general_miguel_costa",
+      "grajau",
+      "granja_julieta",
+      "guaianases",
+      "guapituba",
+      "guarulhos_cecap",
+      "hebraica_reboucas",
+      "imperatriza_leopoldina",
+      "ipiranga",
+      "itaim_paulista",
+      "itapevi",
+      "itaquaquecetuba",
+      "jandira",
+      "jaragua",
+      "jardim_belval",
+      "jardim_helena_vila_mara",
+      "jardim_romano",
+      "jardim_silveira",
+      "joao_dias",
+      "jose_bonifacio",
+      "julio_prestes",
+      "jundiai",
+      "jundiapeba",
+      "jurubatuba",
+      "juventus",
+      "juventus_mooca",
+      "lapa",
+      "lapa_2",
+      "maua",
+      "mogi_das_cruzes",
+      "morumbi",
+      "osasco",
+      "paraiso",
+      "perus",
+      "piqueri",
+      "pirituba",
+      "poa",
+      "prefeito_saladino",
+      "presidente_altino",
+      "primavera_interlagos",
+      "quitauna",
+      "ribeirao_pires",
+      "rio_grande_da_serra",
+      "sagrado_coracao",
+      "santa_rita",
+      "santa_terezinha",
+      "santo_andre",
+      "sao_caetano_do_sul",
+      "sao_miguel_paulista",
+      "socorro",
+      "suzano",
+      "usp_leste",
+      "utinga",
+      "varzea_paulista",
+      "vila_aurora",
+      "vila_clarice",
+      "mendes_vila_natal",
+      "vila_olimpia",
+      "villa_lobos_jaguare"
+    ],
+    "metro": [
+        "aacd_servidor",
+        "adolfo_pinheiro",
+        "alto_da_boa_vista",
+        "alto_do_ipiranga",
+        "ana_rosa",
+        "anhangabau",
+        "armenia",
+        "artur_alvim",
+        "belem",
+        "borba_gato",
+        "bras",
+        "bresser_mooca",
+        "brigadeiro",
+        "brooklin",
+        "butanta",
+        "camilo_haddad",
+        "campo_belo",
+        "campo_limpo",
+        "capao_redondo",
+        "carandiru",
+        "carrao",
+        "chacara_klabin",
+        "clinicas",
+        "conceicao",
+        "consolacao",
+        "eucaliptos",
+        "faria_lima",
+        "fazenda_da_juta",
+        "fradique_coutinho",
+        "giovanni_gronchi",
+        "guilhermina_esperanca",
+        "higienopolis_mackenzie",
+        "hospital_sao_paulo",
+        "jabaquara",
+        "japao_liberdade",
+        "jardim_colonial",
+        "jardim_planalto",
+        "jardim_sao_paulo_ayrton_senna",
+        "largo_treze",
+        "luz",
+        "marechal_deodoro",
+        "moema",
+        "oratorio",
+        "oscar_freire",
+        "palmeiras_barra_funda",
+        "parada_inglesa",
+        "patriarca_vila_re",
+        "paulista",
+        "pedro_ii",
+        "penha",
+        "pinheiros",
+        "portuguesa_tiete",
+        "praca_da_arvore",
+        "republica",
+        "sacoma",
+        "santa_cecilia",
+        "santa_cruz",
+        "santana",
+        "santo_amaro",
+        "santos_imigrantes",
+        "sao_bento",
+        "sao_joaquim",
+        "sao_judas",
+        "sao_lucas",
+        "sao_mateus",
+        "sao_paulo_morumbi",
+        "sapopemba",
+        "saude",
+        "se",
+        "sumare",
+        "tamanduatei",
+        "tatuape",
+        "tiradentes",
+        "trianon_masp",
+        "tucuruvi",
+        "vergueiro",
+        "vila_das_belezas",
+        "vila_madalena",
+        "vila_mariana",
+        "vila_matilde",
+        "vila_prudente",
+        "vila_sonia",
+        "vila_tolstoi",
+        "vila_uniao"
+      ]
+};
+var stations_discovered = [];
 
-active_mode();
-timer();
+active_mode(mode);
+timer(300);
 
 var input = document.getElementById('station');
 input.addEventListener('input', searchValues);
 
-function searchValues(e) {
-    let guess_string = e.target.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    let regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
-    guess_string = guess_string.replace(regex, "").replace(/\s{2,}/g," ");;
-    guess_string = guess_string.trim();
-
-    for (const [key, value] of Object.entries(stations)) {
-        if (value.includes(guess_string)) {
-            let station = document.getElementById(key);
-            station.style.display="Block";
-            input.value = "";
-        }
-    }
-}
-
-function active_mode(){
-
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-      });
-    
-    let mode = params.mode
-    
-    var cptm_group = document.querySelector("*[id='CPTM']");
-    var linha_8 = document.querySelector("*[id='Linha8']");     
-    var linha_12 = document.querySelector("*[id='Linha12']");
-    var linha_13 = document.querySelector("*[id='Linha13']");
-    var linha_10 = document.querySelector("*[id='Linha10']");
-    var linha_7 = document.querySelector("*[id='Linha7']");
-    var linha_11 = document.querySelector("*[id='Linha11']");
-    var linha_9 = document.querySelector("*[id='Linha9']");
-
-    if (mode == "CPTM") {
-        console.log("CPTM Mode");
-        cptm_group.style.display="Block";
-        linha_8.style.display="Block";
-        linha_12.style.display="Block";
-        linha_13.style.display="Block";
-        linha_10.style.display="Block";
-        linha_7.style.display="Block";
-        linha_11.style.display="Block";
-        linha_9.style.display="Block";
-    } else {
-        console.log("Metro Only mode");
-        cptm_group.style.display="None";
-        linha_8.style.display="None";
-        linha_12.style.display="None";
-        linha_13.style.display="None";
-        linha_10.style.display="None";
-        linha_7.style.display="None";
-        linha_11.style.display="None";
-        linha_9.style.display="None";
-    }
-}
-
-function timer(){
-    var seconds = 300; // Tempo em segundos
+function timer(seconds){
     
     var countdown = setInterval(function() {
       var timer = document.getElementById("timer");
       if (seconds <= 0) {
         clearInterval(countdown);
-        alert("Tempo Esgotado!");
+        alert(`Tempo Esgotado! Score: ${stations_discovered.length}`);
         input.disabled = true;
       } else {
         var minutes = Math.floor(seconds / 60 % 60);
@@ -632,4 +762,69 @@ function timer(){
         seconds--;
       }
     }, 1000); // Atualiza a cada segundo
+}
+
+function active_mode(mode){
+  
+  var cptm_group = document.querySelector("*[id='CPTM']");
+  var linha_8 = document.querySelector("*[id='Linha8']");     
+  var linha_12 = document.querySelector("*[id='Linha12']");
+  var linha_13 = document.querySelector("*[id='Linha13']");
+  var linha_10 = document.querySelector("*[id='Linha10']");
+  var linha_7 = document.querySelector("*[id='Linha7']");
+  var linha_11 = document.querySelector("*[id='Linha11']");
+  var linha_9 = document.querySelector("*[id='Linha9']");
+
+  if (mode == "CPTM") {
+      cptm_group.style.display="Block";
+      linha_8.style.display="Block";
+      linha_12.style.display="Block";
+      linha_13.style.display="Block";
+      linha_10.style.display="Block";
+      linha_7.style.display="Block";
+      linha_11.style.display="Block";
+      linha_9.style.display="Block";
+  } else {
+      cptm_group.style.display="None";
+      linha_8.style.display="None";
+      linha_12.style.display="None";
+      linha_13.style.display="None";
+      linha_10.style.display="None";
+      linha_7.style.display="None";
+      linha_11.style.display="None";
+      linha_9.style.display="None";
+  }
+}
+
+function searchValues(e) {
+  let guess_string = e.target.value.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  let regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
+  guess_string = guess_string.replace(regex, "").replace(/\s{2,}/g," ");;
+  guess_string = guess_string.trim();
+
+  for (const [key, value] of Object.entries(stations)) {
+      if (value.includes(guess_string)) {
+          let station = document.getElementById(key);
+          station.style.display="Block";
+          input.value = "";
+          correct_guess(key, stations_discovered, mode);
+      }
+  }
+}
+
+function correct_guess(correct_guess, stations_discovered, mode){
+
+    if (stations_discovered.includes(correct_guess)){
+        console.log("Already added.");
+    }
+    else{
+        if (mode == "CPTM"){
+            stations_discovered.push(correct_guess);
+        }
+        else{
+            if (stations_category["metro"].includes(correct_guess)){
+                stations_discovered.push(correct_guess);
+            }
+        }
+    }
 }
