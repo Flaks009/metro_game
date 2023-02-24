@@ -765,7 +765,7 @@ function timer(seconds){
       } else {
         var minutes = Math.floor(seconds / 60 % 60);
         var seconds_t= Math.floor(seconds % 60);
-        timer.innerHTML = "Tempo restante: " + minutes + " minutos e " + seconds_t + " segundos.";
+        timer.innerHTML = `${minutes}:${seconds_t}`;
         seconds--;
       }
     }, 1000); // Atualiza a cada segundo
