@@ -752,7 +752,12 @@ else{
 }
 
 active_mode(mode);
-timer(300);
+if (mode=="CPTM") {
+    timer(600);
+}
+else{
+    timer(300);
+}
 
 var input = document.getElementById('station');
 input.addEventListener('input', searchValues);
