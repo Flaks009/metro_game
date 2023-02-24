@@ -101,7 +101,8 @@ var stations = {
         "campo limpo"
     ],
     "campo_limpo_paulista": [
-        "campo limpo paulista"
+        "campo limpo paulista",
+        "campo limpo"
     ],
     "capao_redondo": [
         "capao redondo"
@@ -227,7 +228,7 @@ var stations = {
         "hospital sao paulo"
     ],
     "imperatriza_leopoldina": [
-        "imperatriza leopoldina"
+        "imperatriz leopoldina"
     ],
     "ipiranga": [
         "ipiranga"
@@ -260,7 +261,7 @@ var stations = {
     ],
     "jardim_colonial": [
         "jardim colonial",
-        "jd colonial"
+        " jd colonial"
     ],
     "jardim_helena_vila_mara": [
         "jardim helena vila mara",
@@ -279,7 +280,8 @@ var stations = {
     "jardim_sao_paulo_ayrton_senna": [
         "jardim sao paulo ayrton senna",
         "jd sao paulo ayrton senna",
-        "jd sao paulo"
+        "jd sao paulo",
+        "jardim sao paulo"
     ],
     "jardim_silveira": [
         "jardim silveira",
@@ -307,7 +309,8 @@ var stations = {
         "juventus"
     ],
     "juventus_mooca": [
-        "juventus mooca"
+        "juventus mooca",
+        " mooca"
     ],
     "lapa": [
         "lapa"
@@ -536,9 +539,6 @@ var stations = {
     "vila_matilde": [
         "vila matilde"
     ],
-    "mendes_vila_natal": [
-        "mendes vila natal"
-    ],
     "vila_olimpia": [
         "vila olimpia"
     ],
@@ -556,101 +556,104 @@ var stations = {
     ],
     "villa_lobos_jaguare": [
         "villa lobos jaguare"
+    ],
+    "mendes_vila_natal": [
+        "mendes vila natal"
     ]
 };
 var stations_category = {
     "cptm": [
-      "aeroporto_guarulhos",
-      "agua_branca",
-      "amador_bueno",
-      "antonio_gianetti_neto",
-      "antonio_joao",
-      "aracare",
-      "autodromo",
-      "baltazar_fidelis",
-      "barueri",
-      "berrini",
-      "botujuru",
-      "braz_cubas",
-      "caieiras",
-      "calmon_viana",
-      "campo_limpo_paulista",
-      "capuava",
-      "carapicuiba",
-      "ceasa",
-      "cidade_jardim",
-      "cidade_universitaria",
-      "comandante_sampaio",
-      "comendador_ermelino",
-      "corinthians_itaquera",
-      "dom_bosco",
-      "domingos_de_moraes",
-      "engenheiro_cardoso",
-      "engenheiro_goulart",
-      "engenheiro_manoel_feio",
-      "estudantes",
-      "ferraz_de_vasconcelos",
-      "francisco_morato",
-      "franco_da_rocha",
-      "general_miguel_costa",
-      "grajau",
-      "granja_julieta",
-      "guaianases",
-      "guapituba",
-      "guarulhos_cecap",
-      "hebraica_reboucas",
-      "imperatriza_leopoldina",
-      "ipiranga",
-      "itaim_paulista",
-      "itapevi",
-      "itaquaquecetuba",
-      "jandira",
-      "jaragua",
-      "jardim_belval",
-      "jardim_helena_vila_mara",
-      "jardim_romano",
-      "jardim_silveira",
-      "joao_dias",
-      "jose_bonifacio",
-      "julio_prestes",
-      "jundiai",
-      "jundiapeba",
-      "jurubatuba",
-      "juventus",
-      "juventus_mooca",
-      "lapa",
-      "lapa_2",
-      "maua",
-      "mogi_das_cruzes",
-      "morumbi",
-      "osasco",
-      "paraiso",
-      "perus",
-      "piqueri",
-      "pirituba",
-      "poa",
-      "prefeito_saladino",
-      "presidente_altino",
-      "primavera_interlagos",
-      "quitauna",
-      "ribeirao_pires",
-      "rio_grande_da_serra",
-      "sagrado_coracao",
-      "santa_rita",
-      "santa_terezinha",
-      "santo_andre",
-      "sao_caetano_do_sul",
-      "sao_miguel_paulista",
-      "socorro",
-      "suzano",
-      "usp_leste",
-      "utinga",
-      "varzea_paulista",
-      "vila_aurora",
-      "vila_clarice",
-      "mendes_vila_natal",
-      "vila_olimpia",
-      "villa_lobos_jaguare"
+        "aeroporto_guarulhos",
+        "agua_branca",
+        "amador_bueno",
+        "antonio_gianetti_neto",
+        "antonio_joao",
+        "aracare",
+        "autodromo",
+        "baltazar_fidelis",
+        "barueri",
+        "berrini",
+        "botujuru",
+        "braz_cubas",
+        "caieiras",
+        "calmon_viana",
+        "campo_limpo_paulista",
+        "capuava",
+        "carapicuiba",
+        "ceasa",
+        "cidade_jardim",
+        "cidade_universitaria",
+        "comandante_sampaio",
+        "comendador_ermelino",
+        "corinthians_itaquera",
+        "dom_bosco",
+        "domingos_de_moraes",
+        "engenheiro_cardoso",
+        "engenheiro_goulart",
+        "engenheiro_manoel_feio",
+        "estudantes",
+        "ferraz_de_vasconcelos",
+        "francisco_morato",
+        "franco_da_rocha",
+        "general_miguel_costa",
+        "grajau",
+        "granja_julieta",
+        "guaianases",
+        "guapituba",
+        "guarulhos_cecap",
+        "hebraica_reboucas",
+        "imperatriza_leopoldina",
+        "ipiranga",
+        "itaim_paulista",
+        "itapevi",
+        "itaquaquecetuba",
+        "jandira",
+        "jaragua",
+        "jardim_belval",
+        "jardim_helena_vila_mara",
+        "jardim_romano",
+        "jardim_silveira",
+        "joao_dias",
+        "jose_bonifacio",
+        "julio_prestes",
+        "jundiai",
+        "jundiapeba",
+        "jurubatuba",
+        "juventus",
+        "juventus_mooca",
+        "lapa",
+        "lapa_2",
+        "maua",
+        "mogi_das_cruzes",
+        "morumbi",
+        "osasco",
+        "paraiso",
+        "perus",
+        "piqueri",
+        "pirituba",
+        "poa",
+        "prefeito_saladino",
+        "presidente_altino",
+        "primavera_interlagos",
+        "quitauna",
+        "ribeirao_pires",
+        "rio_grande_da_serra",
+        "sagrado_coracao",
+        "santa_rita",
+        "santa_terezinha",
+        "santo_andre",
+        "sao_caetano_do_sul",
+        "sao_miguel_paulista",
+        "socorro",
+        "suzano",
+        "usp_leste",
+        "utinga",
+        "varzea_paulista",
+        "vila_aurora",
+        "vila_clarice",
+        "vila_olimpia",
+        "villa_lobos_jaguare",
+        "mendes_vila_natal"
     ],
     "metro": [
         "aacd_servidor",
@@ -737,7 +740,7 @@ var stations_category = {
         "vila_sonia",
         "vila_tolstoi",
         "vila_uniao"
-      ]
+    ]
 };
 var stations_discovered = [];
 
