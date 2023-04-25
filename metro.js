@@ -768,7 +768,10 @@ function timer(seconds){
       var timer = document.getElementById("timer");
       if (seconds <= 0) {
         clearInterval(countdown);
-        alert(`Tempo Esgotado! Score: ${stations_discovered.length}`);
+        var modal = new bootstrap.Modal(document.getElementById("modal"), {});;
+        var modal_text = document.getElementById("modal-text");
+        modal_text.textContent = `Score: ${stations_discovered.length}`;
+        modal.show();       
         input.disabled = true;
       } else {
         var minutes = Math.floor(seconds / 60 % 60);
